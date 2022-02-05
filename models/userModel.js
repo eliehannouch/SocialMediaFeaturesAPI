@@ -28,6 +28,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     followers: [
       {
         type: Schema.Types.ObjectId,

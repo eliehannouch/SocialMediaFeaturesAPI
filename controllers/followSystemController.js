@@ -45,7 +45,6 @@ exports.followUnfollow = async (req, res) => {
 exports.getfollowers_followingList = async (req, res) => {
   try {
     const choosenPath = req.path.split("/")[2];
-    console.log(req.path.split("/"));
     const currentUser = await user.findById(req.params.userId);
 
     if (!currentUser)
@@ -58,18 +57,23 @@ exports.getfollowers_followingList = async (req, res) => {
       select: { fullname: 1, username: 1, email: 1, profilePicture: 1 },
     });
 
-    switch (true) {
-      case choosenPath === "followers":
-        return res.status(200).json({
-          message: "Your followers are:",
-          followers: result._doc.followers,
-        });
-      case choosenPath === "following":
-        return res.status(200).json({
-          message: "Your are following:",
-          following: result._doc.following,
-        });
-    }
+    return res.status(200).json({
+      message: `The ${choosenPath} list: `,
+      [choosenPath]: result._doc[choosenPath],
+    });
+
+    // switch (true) {
+    //   case choosenPath === "followers":
+    //     return res.status(200).json({
+    //       message: "Your followers are:",
+    //       followers: result._doc.followers,
+    //     });
+    //   case choosenPath === "following":
+    //     return res.status(200).json({
+    //       message: "Your are following:",
+    //       following: result._doc.following,
+    //     });
+    // }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

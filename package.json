@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "lint:fix": "eslint --fix ./*.js"
   },
   "author": "elieh",
   "license": "ISC",
@@ -12,9 +13,14 @@
     "bcrypt": "^5.0.1",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
-    "mongoose": "^6.1.8"
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.2.0",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.1.8",
+    "rate-limit-mongo": "^2.3.2"
   },
   "devDependencies": {
+    "eslint": "^8.8.0",
     "nodemon": "^2.0.15"
   }
 }
