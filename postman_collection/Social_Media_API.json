@@ -1,0 +1,503 @@
+{
+	"info": {
+		"_postman_id": "9a484ad3-69e9-42be-bbf6-93c55dfab657",
+		"name": "SocialMediaFeatures",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fullname\": \"testingEncryption1\",\n    \"username\":\"tester1\",\n    \"email\":\"tester1@example.com\",\n    \"password\": \"$#@Call4Code\"\n\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/registration/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"registration",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow_Unfollow",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentUserId\":\"61f3844a77413f1e4f831128\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/user/:id/followUnfollow",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						":id",
+						"followUnfollow"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "61f439ab1bcd478b19a7fc62"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Followers List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/user/:userId/followers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						":userId",
+						"followers"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "61f3844a77413f1e4f831128"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Following List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/user/:usedId/following",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						":usedId",
+						"following"
+					],
+					"variable": [
+						{
+							"key": "usedId",
+							"value": "61f3844a77413f1e4f831128"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"senderID\": \"61f3c99df0c4a1fadc385af0\",\n    \"receiverID\": \"61f439ab1bcd478b19a7fc62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/requestfriendship",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"requestfriendship"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Friend Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentUserID\":\"61f3844a77413f1e4f831128\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/friendRequests/:requestID/cancel/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"friendRequests",
+						":requestID",
+						"cancel",
+						""
+					],
+					"variable": [
+						{
+							"key": "requestID",
+							"value": "61fd66afd99133df36226df3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Decline Friend Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentUserID\":\"61f439ab1bcd478b19a7fc62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/friendRequests/:requestID/decline",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"friendRequests",
+						":requestID",
+						"decline"
+					],
+					"variable": [
+						{
+							"key": "requestID",
+							"value": "61fd6c7c3cd923b19167ce21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Friend Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentUserID\":\"61f439ab1bcd478b19a7fc62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/friendRequests/:requestID/accept",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"friendRequests",
+						":requestID",
+						"accept"
+					],
+					"variable": [
+						{
+							"key": "requestID",
+							"value": "61fd704534298fe75569cd7e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get SentRequests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/:userID/pendingRequests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						":userID",
+						"pendingRequests"
+					],
+					"variable": [
+						{
+							"key": "userID",
+							"value": "61f3846b77413f1e4f83112c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Received Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/:userID/receivedRequests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						":userID",
+						"receivedRequests"
+					],
+					"variable": [
+						{
+							"key": "userID",
+							"value": "61f439811bcd478b19a7fc5c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get friends list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/users/:userID/friends",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						":userID",
+						"friends"
+					],
+					"variable": [
+						{
+							"key": "userID",
+							"value": "61f3844a77413f1e4f831128"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"postOwner\":\"61f4399c1bcd478b19a7fc5f\",\n    \"content\":\"Hello I'm farah, one of the GDG members\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/posts/newpost",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"newpost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Timeline Posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currentUserID\":\"61f3844a77413f1e4f831128\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/posts/timelineposts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"timelineposts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like_Dislike_POST",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\":\"61f3846b77413f1e4f83112c\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/posts/:postID/like",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						":postID",
+						"like"
+					],
+					"variable": [
+						{
+							"key": "postID",
+							"value": "6208f1b8255fca31a5cc5002"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
