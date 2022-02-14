@@ -19,4 +19,16 @@ router.patch(
   friendRequestsController.acceptFriendRequest
 );
 
+router.get(
+  "/:userID/pendingRequests",
+  friendRequestsController.getSent_Received_Requests
+);
+
+router.get(
+  "/:userID/receivedRequests",
+  friendRequestsController.getSent_Received_Requests
+);
+
+router.get("/:userID/friends", friendRequestsController.getFriendsList);
+
 module.exports = router;

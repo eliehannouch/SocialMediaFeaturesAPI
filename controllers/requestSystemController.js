@@ -181,4 +181,38 @@ exports.acceptFriendRequest = async (req, res) => {
   }
 };
 
-// TODO: Get Friends List , Get the Received and sent requests
+exports.getSent_Received_Requests = async (req, res) => {
+  try {
+    const path = req.path.split("/")[2];
+    const target = path === "receivedRequests" ? "receiverID" : "senderID";
+    let dataTobePopulated =
+      path === "receivedRequests" ? "senderID" : "receiverID";
+
+    const requests = await FriendRequest.find({
+      $and: [{ [target]: req.params["userID"] }, { requestStatus: "pending" }],
+    }).populate(dataTobePopulated, "fullname email -_id");
+
+    return requests.length <= 0
+      ? res.status(404).json({ message: "You dont have any pending request" })
+      : res.status(200).json(requests);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+};
+
+exports.getFriendsList = async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.params["userID"]).populate(
+      "friends",
+      "fullname profilePicture -_id"
+    );
+
+    return !currentUser
+      ? res.status(401).json({ message: "Please log in to get access" })
+      : res.status(200).json({ friend: currentUser["_doc"]["friends"] });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+};

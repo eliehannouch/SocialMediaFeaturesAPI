@@ -1,11 +1,13 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
+const secureDATA = require("../securityHelper").encrypt_DecryptDATA;
 
 // REGISTER
 exports.registerUsers = async (req, res) => {
   try {
+    const encryptedEmail = secureDATA(req.body.email, "encrypt");
     const userExist = await User.findOne({
-      $or: [{ email: req.body.email }, { username: req.body.username }],
+      $or: [{ email: encryptedEmail }, { username: req.body.username }],
     });
 
     if (userExist) {
@@ -20,7 +22,7 @@ exports.registerUsers = async (req, res) => {
     const newUser = new User({
       fullname: req.body.fullname,
       username: req.body.username,
-      email: req.body.email,
+      email: encryptedEmail,
       password: hashedPassword,
     });
     // Saving the user to the database
